@@ -325,7 +325,7 @@
               <div class="ec-col-label ec-col-label-ve">Variable Environment</div>
               <div class="ec-row"><span class="ec-key">label</span><span class="ec-arr">→</span><span class="ec-val-y">"global"</span></div>
               <div class="ec-row"><span class="ec-key">makeCounter</span><span class="ec-arr">→</span><span class="ec-val-g">fn(){...}</span></div>
-              <div class="ec-row"><span class="ec-key">c1, c2</span><span class="ec-arr">→</span><span class="ec-val-m">undefined → fn</span></div>
+              <div class="ec-row"><span class="ec-key">c1, c2</span><span class="ec-arr">→</span><span class="ec-val-m"> fn</span></div>
             </div>
             <div class="ec-col-box">
               <div class="ec-col-label ec-col-label-or">Outer Reference</div>
@@ -508,13 +508,13 @@ c1();</pre>
   <div style="margin:36px 0;">
     <div class="scope-ring scope-ring-global">
       <div class="scope-label sl-green">GLOBAL SCOPE — Global EC's Variable Environment</div>
-      <div><span class="scope-var sv-green">let a = 1</span><span class="scope-var sv-green">let name = "Sekhar"</span></div>
+      <div><span class="scope-var sv-green">let a = "global"</span></div>
       <div class="scope-ring scope-ring-outer">
         <div class="scope-label sl-purple">FUNCTION SCOPE — outer() EC</div>
-        <div><span class="scope-var sv-purple">let b = 2</span><span class="scope-var sv-purple">sees: a ✓</span></div>
+        <div><span class="scope-var sv-purple">let b = "outer"</span><span class="scope-var sv-purple">sees: a ✓</span></div>
         <div class="scope-ring scope-ring-inner">
           <div class="scope-label sl-red">FUNCTION SCOPE — inner() EC</div>
-          <div><span class="scope-var sv-red">let c = 3</span><span class="scope-var sv-red">sees: a, b, c ✓</span></div>
+          <div><span class="scope-var sv-red">let c = "inner"</span><span class="scope-var sv-red">sees: a, b, c ✓</span></div>
         </div>
       </div>
     </div>
@@ -698,7 +698,7 @@ console.log(sayHi());</pre>
       <div class="bp-body">
         <div class="bp-row" style="color:var(--muted);font-size:.68rem;font-style:italic;font-family:'JetBrains Mono',monospace;padding:4px 0 8px;">Hidden [[scope]] property automatically attached by JS engine</div>
         <div class="bp-row bp-hl"><span class="bp-key">count</span><span class="bp-arrow">→</span><span class="bp-val-g">still accessible ✓</span></div>
-        <div class="bp-row"><span class="bp-key">label</span><span class="bp-arrow">→</span><span class="bp-val-p">global scope ✓</span></div>
+        <!-- <div class="bp-row"><span class="bp-key">label</span><span class="bp-arrow">→</span><span class="bp-val-p">global scope ✓</span></div> -->
         <div class="bp-alive">
           c1() called → count: 1<br>
           c1() called → count: 2<br>
@@ -906,7 +906,7 @@ c1();</pre>
     </div>
   </div>
 </footer>
-
+<script src="./index.js"></script>
 <script>
 const codeMap = {
   'ec-order': `
@@ -1110,5 +1110,6 @@ function runCode(id) {
   setTimeout(() => { console.log = origLog; }, 500);
 }
 </script>
+
 </body>
 </html>
